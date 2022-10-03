@@ -5,7 +5,16 @@ function getRandom(numberMin, numberMax) {
   if (numberMin >= 0 && numberMax > numberMin) {
     return Math.floor(Math.random() * (numberMax - numberMin + 1)) + numberMin;
   }
-  return NaN; //не понимаю, пока
+  return NaN; //не понимаю, как NaN передать...
 }
 getRandom(25,1);
 
+//Функция для проверки максимальной длины строки
+
+function getLenghtRange(stringChecked, maxLength) {
+  if (stringChecked.length <= maxLength) {
+    return true;
+  }
+  return false;
+}
+getLenghtRange ('Привет!', 20);
