@@ -5,7 +5,7 @@ function getRandom(numberMin, numberMax) {
   if (numberMin >= 0 && numberMax > numberMin) {
     return Math.floor(Math.random() * (numberMax - numberMin + 1)) + numberMin;
   }
-  return NaN; //не понимаю, как NaN передать...
+  return NaN;
 }
 getRandom(25,1);
 
