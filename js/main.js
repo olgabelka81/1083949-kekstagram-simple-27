@@ -1,20 +1,20 @@
 //Функция возвращающая целое число
-//https://translated.turbopages.org/proxy_u/en-ru.ru.c6a0fddb-6336eec3-03919bd9-74722d776562/https/stackoverflow.com/a/14790863
+// https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random and www.htmlacademy.ru
 
-function getRandom(numberMin, numberMax) {
-  if (numberMin >= 0 && numberMax > numberMin) {
-    return Math.floor(Math.random() * (numberMax - numberMin + 1)) + numberMin;
+function getRandomPositiveInteger (a, b) {
+  if (a < 0 || b < 0) {
+    return NaN;
   }
-  return NaN;
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
 }
-getRandom(25,1);
+getRandomPositiveInteger (25, 1);
 
 //Функция для проверки максимальной длины строки
 
-function getLenghtRange(stringChecked, maxLength) {
-  if (stringChecked.length <= maxLength) {
-    return true;
-  }
-  return false;
+function checkStringLength (string, length) {
+  return string.length <= length;
 }
-getLenghtRange ('Привет!', 20);
+checkStringLength ('Привет!', 20);
