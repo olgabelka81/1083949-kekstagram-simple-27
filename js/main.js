@@ -20,7 +20,6 @@ function checkStringLength (string, length) {
 checkStringLength ('Привет!', 20);
 
 // module4-task1
-//const ID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 
 const DESCRIPTION = [
   'Дисплей',
@@ -50,17 +49,17 @@ const DESCRIPTION = [
   'Покинутое здравомыслие'
 ];
 const COUNT_CARDS_PHOTO = 25;
-const getCardPhoto = () => ({
-  // const IdGenerator = getRandomPositiveInteger(0, Id.length - 1);
+const getCardPhoto = function(index) {
+  return {
+    id: index + 1,
+    url : `photos/${index + 1}.jpg`,
+    description : DESCRIPTION[getRandomPositiveInteger(0, DESCRIPTION.length - 1)],
+    likes : getRandomPositiveInteger(15, 200),
+    comment : getRandomPositiveInteger(0, 200)
+  };
+};
 
-  id: 1,
-  url : '',
-  description : DESCRIPTION[getRandomPositiveInteger(0, DESCRIPTION.length - 1)],
-  likes : getRandomPositiveInteger(15, 200),
-  comment : getRandomPositiveInteger(0, 200),
-});
-
-const getPhotos = Array.from({length: COUNT_CARDS_PHOTO }, getCardPhoto);
+const getPhotos = Array.from({length: COUNT_CARDS_PHOTO }, (value, index) => getCardPhoto(index));
 console.log (
   getPhotos
 );
