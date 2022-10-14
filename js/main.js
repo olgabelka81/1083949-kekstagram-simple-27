@@ -1,8 +1,1 @@
-//import './const.js';
-//import './util.js';
-import './card-photo.js';
-import {Photos} from './photos.js';
-
-//console.log (
-Photos();
-//);
+import {Photos} from './card-photo.js'; //eslint ругается, что Photos нигде не используется
