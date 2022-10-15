@@ -1,4 +1,4 @@
-import {COUNT_CARDS_PHOTO, DESCRIPTION} from './const.js';
+import {COUNT_CARDS_PHOTO, DESCRIPTION} from './constants.js';
 import {RANDOM_POSITIVE_INTEGER} from './utils.js';
 
 //Генерация карточки загружаемого фото
@@ -13,5 +13,5 @@ const getCardPhoto = function(index) {
 };
 
 //Генерация объектов
-const Photos = Array.from({length: COUNT_CARDS_PHOTO }, (value, index) => getCardPhoto(index));
-export {Photos};
+const photos = Array.from({length: COUNT_CARDS_PHOTO }, (value, index) => getCardPhoto(index));
+export {photos};
