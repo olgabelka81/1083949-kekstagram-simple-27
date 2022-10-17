@@ -15,4 +15,3 @@ export {RANDOM_POSITIVE_INTEGER};
 function checkStringLength (string, length) {
   return string.length <= length;
 }
-checkStringLength('Привет!', 50);

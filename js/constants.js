@@ -26,8 +26,8 @@ const DESCRIPTION = [
   'Благотворительность',
   'Покинутое здравомыслие'
 ];
-export {DESCRIPTION};
 
 //Количество создаваемых объектов
 const COUNT_CARDS_PHOTO = 25;
-export {COUNT_CARDS_PHOTO};
+
+export {DESCRIPTION, COUNT_CARDS_PHOTO};
