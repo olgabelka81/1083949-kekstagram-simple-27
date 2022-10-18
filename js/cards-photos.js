@@ -13,5 +13,5 @@ const getCardPhoto = function(index) {
 };
 
 //Генерация объектов
-const photos = Array.from({length: COUNT_CARDS_PHOTO }, (value, index) => getCardPhoto(index));
-export {photos};
+const createPhotos = Array.from({length: COUNT_CARDS_PHOTO }, (value, index) => getCardPhoto(index));
+export {createPhotos};

@@ -1,1 +1,2 @@
-import {photos} from './cards-photos.js';
+import {similarListFragment} from './picture.js';
+
