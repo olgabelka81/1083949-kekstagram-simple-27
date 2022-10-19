@@ -1,2 +1,1 @@
-import {similarListFragment} from './picture.js';
-
+import {getPictures} from './picture.js';
