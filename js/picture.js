@@ -3,7 +3,7 @@ import {createPhotos} from './cards-photos.js';
 const pictures = document.querySelector('.pictures');
 
 const similarPictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-const getPictures = function () {
+const getPictures = () => {
   const similarListFragment = document.createDocumentFragment();
   createPhotos.forEach(({url, comment, likes}) => {
     const pictureElement = similarPictureTemplate.cloneNode(true);
