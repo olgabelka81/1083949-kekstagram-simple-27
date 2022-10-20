@@ -9,9 +9,9 @@ const RANDOM_POSITIVE_INTEGER = function getRandomPositiveInteger (a, b) {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
-export {RANDOM_POSITIVE_INTEGER};
 
 //Функция для проверки максимальной длины строки
 function checkStringLength (string, length) {
   return string.length <= length;
 }
+export {RANDOM_POSITIVE_INTEGER, checkStringLength};

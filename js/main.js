@@ -1,1 +1,1 @@
-import {photos} from './cards-photos.js';
+import {getPictures} from './picture.js';
