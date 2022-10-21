@@ -12,33 +12,30 @@ const onModalEscKeydown = (evt) => {
   }
 };
 
-//1. меняется значения поля #upload-file;
-//Открываем модальное окно:
-
+//Функция открытия модального окна
 function openUserModal () {
   userModalWindow.classList.remove('hidden');
   userModalWindowStyle.classList.toggle('modal-open');
 
-  //document.addEventListener('keydown', onModalEscKeydown);
+  document.addEventListener('keydown', onModalEscKeydown);
 }
 
-userUploadPhoto.addEventListener('load', () => {
+userUploadPhoto.addEventListener('change', () => {
   openUserModal();
 });
 
-userUploadPhoto.addEventListener('load', (evt) => {
+userUploadPhoto.addEventListener('change', (evt) => {
   if (isEnterKey(evt)) {
     openUserModal();
   }
 });
 
-
-openUserModal ();
-//Закрываем модальное окно:
+//Функция закрытия модального окна
 function closeUserModal () {
   userModalWindow.classList.add('hidden');
   userModalWindowStyle.classList.toggle('modal-open');
 
+  userUploadPhoto.innerHTML = '';
   document.removeEventListener('keydown', onModalEscKeydown);
 }
 
