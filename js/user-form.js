@@ -11,10 +11,8 @@ userForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
   const isValid = pristine.validate();
-  if (isValid) {
-    //то отправить форму?
-  } else {
-    //если нет, выдать ошибку?
+  if (!isValid) {
+    evt.preventDefault();
   }
 });
 
