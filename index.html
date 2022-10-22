@@ -106,7 +106,7 @@
                 <!-- Добавление комментария к изображению -->
                 <fieldset class="img-upload__text text">
                   <label>
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..." required minlength='20' maxlength='140'
+                    <textarea class="text__description" name="description" id="description" placeholder="Ваш комментарий..." required  minlength='20' maxlength='140'
                     data-pristine-required-message="Обязательное поле"
                     data-pristine-minlength-message="Минимальная длина 20 символов"
                     data-pristine-maxlength-message="Максимальная длина 140 символов"></textarea>
@@ -169,7 +169,7 @@
       </div>
     </section>
   </template>
-  <!-- <script src="pristine/pristine.js"></script>-->
+  <script src="vendor/pristine/pristine.min.js"></script>
   <script defer src="/js/main.js" type="module"></script>
 </body>
 </html>
