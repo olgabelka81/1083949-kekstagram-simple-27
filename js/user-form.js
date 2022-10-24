@@ -1,28 +1,27 @@
-const userForm = document.querySelector('.img-upload__text');
+const userForm = document.querySelector('.img-upload__form');
 
 const pristine = new Pristine(userForm, {
-  classTo: 'text__label',
-  errorTextParent: 'text__label',
-  errorTextClass: 'text__errror-text',
-});
+  classTo: 'text',
+  errorClass: 'text--invalid',
+  successClass: 'text--valid',
+  errorTextParent: 'text',
+  errorTextTag: 'span',
+  errorTextClass: 'text__error'
+}, false);
+
+pristine.addValidator(
+  userForm.querySelector('#description'),
+  validateComment
+);
 
 function validateComment (value) {
   return value.length >= 20 && value.length <= 140;
 }
 
-pristine.addValidator(
-  userForm.querySelector('#description'),
-  validateComment,
-  'От 20 до 140 символов'
-);
-
 userForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-
   const isValid = pristine.validate();
   if (!isValid) {
     evt.preventDefault();
+    pristine.validate();
   }
 });
-
-//форма ещё не доработана, при отправки невалидного комментария на сервере приходит сообщение об ошибке.
