@@ -8,7 +8,9 @@ const getPictures = () => {
   createPhotos.forEach(({url, comment, likes}) => {
     const pictureElement = similarPictureTemplate.cloneNode(true);
     pictureElement.querySelector('.picture__img').src = url;
+
     pictureElement.querySelector('.picture__img').addEventListener('click', onOpenBigPicture);
+
     pictureElement.querySelector('.picture__comments').textContent = comment;
     pictureElement.querySelector('.picture__likes').textContent = likes;
     similarListFragment.appendChild(pictureElement);
