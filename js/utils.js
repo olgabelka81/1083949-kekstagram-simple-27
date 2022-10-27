@@ -14,4 +14,11 @@ const RANDOM_POSITIVE_INTEGER = function getRandomPositiveInteger (a, b) {
 function checkStringLength (string, length) {
   return string.length <= length;
 }
-export {RANDOM_POSITIVE_INTEGER, checkStringLength};
+
+//Функция проверки соответствия клавиши "Escape"
+const isEscapeKey = (evt) => evt.key === 'Escape';
+//Функция проверки соответствия клавиши "Enter" для загрузки фото с клавиатуры
+const isEnterKey = (evt) => evt.key === 'Enter';
+
+
+export {RANDOM_POSITIVE_INTEGER, checkStringLength, isEscapeKey, isEnterKey};
