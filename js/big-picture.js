@@ -1,21 +1,22 @@
-//import {createPhotos} from './cards-photos.js';
-//import { similarPictureTemplate } from './picture.js';
+import {createPhotos} from './cards-photos.js';
+import './picture.js';
 
-const sectionBigPicture = document.querySelector('.big-picture');
+const bigPicture = document.querySelector('#big-picture');
+const bigPictureImg = document.querySelector('.big-picture__img');
 
+const searchPhotosUrl = [];
+const createBigPhotosUrl = [];
 
-/*function renderPhotoDataSection() {
-  similarPictureTemplate.addEventListener('click', (evt) => {
-    if (evt.target.className === 'picture__img') {
-      const {url} = createPhotos[evt.target.index + 1];
-      fullSizePhoto.src = url;
-    }
-  }
-  );
-}*/
+for (let i = 0; i < createPhotos.length; i++) {
+  bigPictureImg.querySelector('img').src = createPhotos[i].url;
 
-const openBigPicture = () => {
-  sectionBigPicture.classList.remove('hidden');
+  searchPhotosUrl.push(createPhotos[i].url);
+  createBigPhotosUrl.push(bigPictureImg.querySelector('img').src);
+}
+
+const onOpenBigPicture = (evt) => {
+  evt.preventDefault();
+  bigPicture.classList.remove('hidden');
 };
 
-export {openBigPicture};
+export {onOpenBigPicture};
