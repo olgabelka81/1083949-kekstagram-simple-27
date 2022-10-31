@@ -14,6 +14,8 @@ scaleControlSmaller.addEventListener('click', () => {
     scaleControlValue -= 25;
     scaleControl.value = `${scaleControlValue}%`;
     imgUploadPreview.style.transform = `scale(${scaleControlValue / 100})`;
+  } else {
+    scaleControl.value = `${100}%`;
   }
 });
 
@@ -22,6 +24,8 @@ scaleControlBigger.addEventListener('click', () => {
     scaleControlValue += 25;
     scaleControl.value = `${scaleControlValue}%`;
     imgUploadPreview.style.transform = `scale(${scaleControlValue / 100})`;
+  } else {
+    scaleControl.value = `${100}%`;
   }
 });
 
