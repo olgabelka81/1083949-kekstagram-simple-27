@@ -18,10 +18,13 @@ function validateComment (value) {
   return value.length >= 20 && value.length <= 140;
 }
 
-userForm.addEventListener('submit', (evt) => {
+const onValidateComment = () => {userForm.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
   if (!isValid) {
     evt.preventDefault();
     pristine.validate();
   }
 });
+};
+
+export {onValidateComment};

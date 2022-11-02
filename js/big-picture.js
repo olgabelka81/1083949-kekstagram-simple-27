@@ -1,5 +1,4 @@
 import {createPhotos} from './cards-photos.js';
-import './picture.js';
 
 const bigPicture = document.querySelector('#big-picture');
 const bigPictureImg = document.querySelector('.big-picture__img');
