@@ -1,4 +1,7 @@
 import {isEscapeKey, isEnterKey} from './utils.js';
+import { resetScale } from './scale-control.js';
+import { onValidateComment } from './user-form.js';
+import { resetEffects } from './filters.js';
 
 const userUploadPhoto = document.querySelector('#upload-file');
 const userModalWindow = document.querySelector('.img-upload__overlay');
@@ -16,6 +19,7 @@ const onModalEscKeydown = (evt) => {
 function openUserModal () {
   userModalWindow.classList.remove('hidden');
   userModalWindowStyle.classList.toggle('modal-open');
+  onValidateComment ();
 
   document.addEventListener('keydown', onModalEscKeydown);
 }
@@ -32,6 +36,8 @@ userUploadPhoto.addEventListener('change', (evt) => {
 
 //Функция закрытия модального окна
 function closeUserModal () {
+  resetScale();
+  resetEffects();
   userModalWindow.classList.add('hidden');
   userModalWindowStyle.classList.toggle('modal-open');
 

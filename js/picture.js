@@ -19,4 +19,4 @@ const getPictures = () => {
 };
 getPictures();
 
-export {getPictures};
+//export {getPictures};
