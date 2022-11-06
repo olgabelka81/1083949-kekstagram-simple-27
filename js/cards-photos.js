@@ -8,7 +8,7 @@ const getCardPhoto = function(index) {
     url : `photos/${index + 1}.jpg`,
     description : DESCRIPTION[RANDOM_POSITIVE_INTEGER(0, DESCRIPTION.length - 1)],
     likes : RANDOM_POSITIVE_INTEGER(15, 200),
-    comment : RANDOM_POSITIVE_INTEGER(0, 200)
+    comments : RANDOM_POSITIVE_INTEGER(0, 200)
   };
 };
 

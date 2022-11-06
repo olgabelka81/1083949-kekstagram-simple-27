@@ -1,4 +1,4 @@
-import {createPhotos} from './cards-photos.js';
+/*import {createPhotos} from './cards-photos.js';
 
 const bigPicture = document.querySelector('#big-picture');
 const bigPictureImg = document.querySelector('.big-picture__img');
@@ -17,4 +17,4 @@ const onOpenBigPicture = () => {
   bigPicture.classList.remove('hidden');
 };
 
-export {onOpenBigPicture};
+//export {onOpenBigPicture};*/

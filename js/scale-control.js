@@ -37,7 +37,4 @@ const resetScale = () => {
   scaleImage();
 };
 
-scaleControlSmaller.addEventListener('click', onSmallerButtonClick);
-scaleControlBigger.addEventListener('click', onBiggerButtonClick);
-
-export { resetScale };
+export { scaleControlSmaller, onSmallerButtonClick, scaleControlBigger, onBiggerButtonClick, resetScale };
