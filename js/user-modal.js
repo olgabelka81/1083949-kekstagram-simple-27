@@ -1,7 +1,7 @@
 import {isEscapeKey, isEnterKey} from './utils.js';
 import { scaleControlSmaller, onSmallerButtonClick, scaleControlBigger, onBiggerButtonClick, resetScale } from './scale-control.js';
-//import { validateForm } from './validate-form.js';
 import { form, onFormChange, resetEffects } from './filters.js';
+import { elementDescription } from './validate-form.js';
 
 const userUploadPhoto = document.querySelector('#upload-file');
 const userModalWindow = document.querySelector('.img-upload__overlay');
@@ -45,7 +45,8 @@ const closeUserModal = () => {
   resetScale();
   resetEffects();
   onUserModalWindow();
-  //validateForm.removeEventListener('submit', onValidateComment);
+  elementDescription.value = '';
+  userUploadPhoto.value = '';
   scaleControlSmaller.removeEventListener('click', onSmallerButtonClick);
   scaleControlBigger.removeEventListener('click', onBiggerButtonClick);
   form.removeEventListener('change', onFormChange);

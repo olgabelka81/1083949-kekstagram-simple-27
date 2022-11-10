@@ -1,29 +1,38 @@
+import { showAlert } from './utils.js';
+
+const URL_SERVER = 'https://27.javascript.pages.academy/kekstagram-simple';
+const URL_PHOTO = `${URL_SERVER}/data`;
+
 const getData = (onSuccess) => {
-  fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
+  fetch(
+    URL_PHOTO,
+  )
     .then((response) => response.json())
     .then((pictures) => {
       onSuccess(pictures);
+    })
+    .catch(() => {
+      showAlert('Ошибка загрузки');
     });
 };
 
-const sendData = (onSuccess, onFail, body) => {
-  fetch(
-    'https://27.javascript.pages.academy/kekstagram-simple',
-    {
-      method: 'POST',
-      body,
-    },
-  )
-    .then((response) => {
-      if (response.ok) {
-        onSuccess();
-      } else {
-        onFail('Не удалось отправить форму. Попробуйте ещё раз');
-      }
-    })
-    .catch(() => {
-      onFail('Не удалось отправить форму. Попробуйте ещё раз');
-    });
+const sendData = async (onSuccess, onFail, body) => {
+  try {
+    const response = await fetch(
+      URL_SERVER,
+      {
+        method: 'POST',
+        body,
+      },
+    );
+    if(!response.ok) {
+      throw new Error('Не удалось отправить форму. Попробуйте ещё раз');
+    }
+    onSuccess();
+  }
+  catch(error) {
+    onFail(error.message);
+  }
 };
 
 export {getData, sendData};

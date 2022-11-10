@@ -1,10 +1,10 @@
-//const effects = document.querySelectorAll('.effects__radio');
+
 const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
-//const arrayEffectsValue = [];
-//imgUploadPreview.classList.add('effects__preview--none');
+
+const effects = document.querySelectorAll('.effects__radio');
 
 const EFFECTS = [
   {
@@ -93,11 +93,14 @@ const onSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();
   imgUploadPreviewImg.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
   imgUploadPreviewImg.classList.add(`effects__previw--${chosenEffect.name}`);
-  valueElement.value = sliderElement;
+  valueElement.value = sliderValue;
 };
 
 const resetEffects = () => {
+  effects[0].checked = true;
   chosenEffect = DEFAULT_EFFECT;
+  imgUploadPreviewImg.removeAttribute('class');
+  imgUploadPreviewImg.removeAttribute('style');
   updateSlider();
 };
 
