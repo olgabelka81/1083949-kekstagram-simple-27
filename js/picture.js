@@ -8,8 +8,6 @@ const getPictures = (createPhotos) => {
   createPhotos.forEach(({url, comments, likes, description}) => {
     const pictureElement = similarPictureTemplate.cloneNode(true);
     pictureElement.querySelector('.picture__img').src = url;
-
-    //pictureElement.querySelector('.picture__img').addEventListener('click', onOpenBigPicture);
     pictureElement.querySelector('.picture__img').alt = description;
     pictureElement.querySelector('.picture__comments').textContent = comments;
     pictureElement.querySelector('.picture__likes').textContent = likes;

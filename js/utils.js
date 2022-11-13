@@ -1,3 +1,5 @@
+const ALERT_SHOW_TIME = 5000;
+
 //Функция возвращающая целое число
 // https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random and www.htmlacademy.ru
 const RANDOM_POSITIVE_INTEGER = function getRandomPositiveInteger (a, b) {
@@ -20,8 +22,7 @@ const isEscapeKey = (evt) => evt.key === 'Escape';
 //Функция проверки соответствия клавиши "Enter" для загрузки фото с клавиатуры
 const isEnterKey = (evt) => evt.key === 'Enter';
 
-const ALERT_SHOW_TIME = 5000;
-
+//Стили для сообщения об ошибке
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';

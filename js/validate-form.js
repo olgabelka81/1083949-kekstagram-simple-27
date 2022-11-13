@@ -13,43 +13,35 @@ const errorButton = document.querySelector('#error').content.querySelector('.err
 
 const pristine = new Pristine(validateForm, {
   classTo: 'text',
-  errorClass: 'text--invalid',
-  successClass: 'text--valid',
+  errorClass: 'text__description--invalid',
+  successClass: 'text__description--valid',
   errorTextParent: 'text',
   errorTextTag: 'span',
-  errorTextClass: 'text__error',
-}, false);
+  errorTextClass: 'text__description--error',
+});
 
-//Функция блокировки кнопки отправки формы
-const blockSubmitButton = () => {
-  submitButton.disabled = true;
-  elementDescription.readOnly = true;
-  submitButton.textContent = 'Сохраняю...';
-};
+const MIN_TEXT_LENGTH = 20;
+const MAX_TEXT_LENGTH = 140;
 
-//функция разблокировки кнопки отправки формы
-const unblockSubmitButton = () => {
-  submitButton.disabled = false;
-  elementDescription.readOnly = false;
-  submitButton.textContent = 'Сохранить';
-};
-let textlength = 0;
-const validateComment = (value) => value.length >= 20 && value.length <= 140;
+//Функция проверки введённого сообщения максимальной длине строки
+const validateCommentMax = (value) => value.length <= (MAX_TEXT_LENGTH);
 
-const countLetters = () => {
-  textlength = elementDescription.value.length;
-  if (elementDescription.value.length >= 140) {
-    //console.log(textlength, `Максмально 140 символов, сейчас ${textlength}`);
-    return textlength;
-  }
-};
-
+//Валидация строки
 pristine.addValidator(
   elementDescription,
-  validateComment,
-  elementDescription.addEventListener('input', countLetters),
-  `Максмально 140 символов, сейчас ${textlength}`
+  validateCommentMax,
+  'Максмальная длина 140 символов, сейчас 141'
 );
+
+//Функция проверки введённого сообщения минимальной и максимальной длине строки
+const validateComment = (value) => value.length >= MIN_TEXT_LENGTH && value.length <= MAX_TEXT_LENGTH;
+
+//Валидация строки
+pristine.addValidator(
+  elementDescription,
+  validateComment
+);
+
 
 //Функция закрытия окна с сообщением об успешной или ошибочной отправке формы
 const onMessageEscKeydown = (evt) => {
@@ -94,7 +86,7 @@ const getErrorMessage = () => {
   bodyElement.style.overflow = 'hidden';
 };
 
-//Функция скрытия сообщения
+//Функция закрытия сообщения об успешной отправке формы или ошибке
 function hideMessage () {
   const messageElement = document.querySelector('.success') || document.querySelector('.error');
   messageElement.remove();
@@ -105,9 +97,24 @@ function hideMessage () {
   bodyElement.style.overflow = 'auto';
 }
 
+//Функция блокировки кнопки отправки формы
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  elementDescription.readOnly = true;
+  submitButton.textContent = 'Сохраняю...';
+};
+
+//функция разблокировки кнопки отправки формы
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  elementDescription.readOnly = false;
+  submitButton.textContent = 'Сохранить';
+};
+
 //Функция отправки формы
 const setUserFormSubmit = (onSuccess) => {
-  validateForm.addEventListener('submit' , (evt) => {
+  validateForm.addEventListener('submit', onSubmitButton);
+  function onSubmitButton (evt) {
     evt.preventDefault();
     const isValid = pristine.validate();
     if (isValid) {
@@ -125,7 +132,7 @@ const setUserFormSubmit = (onSuccess) => {
         new FormData(evt.target),
       );
     }
-  });
+  }
 };
 
 export { elementDescription, validateForm, setUserFormSubmit };

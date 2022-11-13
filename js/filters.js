@@ -59,6 +59,7 @@ let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
+//Функция обновления слайдера
 const updateSlider = () => {
   sliderElement.classList.remove('hidden');
   sliderElement.noUiSlider.updateOptions({
@@ -75,6 +76,7 @@ const updateSlider = () => {
   }
 };
 
+//Функция нахождения эффекта фильтра
 const onFormChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
@@ -83,6 +85,7 @@ const onFormChange = (evt) => {
   updateSlider();
 };
 
+//Функция работы слайдера
 const onSliderUpdate = () => {
   imgUploadPreviewImg.style.filter = 'none';
   imgUploadPreviewImg.className = '';
@@ -96,6 +99,7 @@ const onSliderUpdate = () => {
   valueElement.value = sliderValue;
 };
 
+//Сброс значений эффектов
 const resetEffects = () => {
   effects[0].checked = true;
   chosenEffect = DEFAULT_EFFECT;
@@ -104,6 +108,7 @@ const resetEffects = () => {
   updateSlider();
 };
 
+//Создание слайдера
 noUiSlider.create(sliderElement, {
   range: {
     min: DEFAULT_EFFECT.min,
