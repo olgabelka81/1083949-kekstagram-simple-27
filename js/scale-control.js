@@ -4,40 +4,44 @@ const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControl = userModalWindow.querySelector('.scale__control--value');
 const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
 
+//Данные для увеличения и уменьшения масштаба
 const SCALE_STEP = 25;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
+const DIVIDER_FOR_SCALE = 100;
 
-let scaleControlValue = 100;
-
-const scaleImage = (value = DEFAULT_SCALE) => {
-  imgUploadPreviewImg.style.transform = `scale(${value / 100})`;
-  scaleControl.value = `${scaleControlValue}%`;
-};
-
-
+//Кнопка уменьшения масштаба
 const onSmallerButtonClick = () => {
+  let scaleControlValue = parseInt(scaleControl.value, 10);
   if (scaleControlValue > MIN_SCALE ) {
     scaleControlValue -= SCALE_STEP;
     scaleControl.value = `${scaleControlValue}%`;
-    imgUploadPreviewImg.style.transform = `scale(${scaleControlValue / 100})`;
+    imgUploadPreviewImg.style.transform = `scale(${scaleControlValue / DIVIDER_FOR_SCALE})`;
   }
 };
 
+//Кнопка увеличения масштаба
 const onBiggerButtonClick = () => {
+  let scaleControlValue = parseInt(scaleControl.value, 10);
   if (scaleControlValue < MAX_SCALE) {
     scaleControlValue += SCALE_STEP;
     scaleControl.value = `${scaleControlValue}%`;
-    imgUploadPreviewImg.style.transform = `scale(${scaleControlValue / 100})`;
+    imgUploadPreviewImg.style.transform = `scale(${scaleControlValue / DIVIDER_FOR_SCALE})`;
   }
 };
 
-const resetScale = () => {
-  scaleImage();
+//Функция добавления обработчиков на кнопках "-" и "+"
+const onAddScale = () => {
+  scaleControl.value = `${DEFAULT_SCALE}%`;
+  scaleControlSmaller.addEventListener('click', onSmallerButtonClick);
+  scaleControlBigger.addEventListener('click', onBiggerButtonClick);
 };
 
-scaleControlSmaller.addEventListener('click', onSmallerButtonClick);
-scaleControlBigger.addEventListener('click', onBiggerButtonClick);
+//Функция удаления обработчиков с кнопок "-" и "+"
+const onRemoveScale = () => {
+  scaleControlSmaller.removeEventListener('click', onSmallerButtonClick);
+  scaleControlBigger.removeEventListener('click', onBiggerButtonClick);
+};
 
-export { resetScale };
+export {DEFAULT_SCALE, scaleControl, imgUploadPreviewImg, onRemoveScale, onAddScale };

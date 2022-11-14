@@ -1,10 +1,8 @@
-//const effects = document.querySelectorAll('.effects__radio');
 const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
-//const arrayEffectsValue = [];
-//imgUploadPreview.classList.add('effects__preview--none');
+const effects = document.querySelectorAll('.effects__radio');
 
 const EFFECTS = [
   {
@@ -59,6 +57,7 @@ let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
+//Функция обновления слайдера
 const updateSlider = () => {
   sliderElement.classList.remove('hidden');
   sliderElement.noUiSlider.updateOptions({
@@ -75,6 +74,7 @@ const updateSlider = () => {
   }
 };
 
+//Функция нахождения эффекта фильтра
 const onFormChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
@@ -83,6 +83,7 @@ const onFormChange = (evt) => {
   updateSlider();
 };
 
+//Функция работы слайдера
 const onSliderUpdate = () => {
   imgUploadPreviewImg.style.filter = 'none';
   imgUploadPreviewImg.className = '';
@@ -93,14 +94,19 @@ const onSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();
   imgUploadPreviewImg.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
   imgUploadPreviewImg.classList.add(`effects__previw--${chosenEffect.name}`);
-  valueElement.value = sliderElement;
+  valueElement.value = sliderValue;
 };
 
-const resetEffects = () => {
+//Сброс значений эффектов
+const resetFilter = () => {
+  effects[0].checked = true;
   chosenEffect = DEFAULT_EFFECT;
+  imgUploadPreviewImg.removeAttribute('class');
+  imgUploadPreviewImg.removeAttribute('style');
   updateSlider();
 };
 
+//Создание слайдера
 noUiSlider.create(sliderElement, {
   range: {
     min: DEFAULT_EFFECT.min,
@@ -112,8 +118,8 @@ noUiSlider.create(sliderElement, {
 });
 
 updateSlider();
-form.addEventListener('change', onFormChange);
+
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 
-export { resetEffects };
+export { form, onFormChange, resetFilter };
 

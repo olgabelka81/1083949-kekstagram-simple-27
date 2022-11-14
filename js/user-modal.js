@@ -1,56 +1,74 @@
 import {isEscapeKey, isEnterKey} from './utils.js';
-import { resetScale } from './scale-control.js';
-import { onValidateComment } from './user-form.js';
-import { resetEffects } from './filters.js';
+import { form, onFormChange, resetFilter } from './filters.js';
+import { elementDescription } from './validate-form.js';
+import { DEFAULT_SCALE, scaleControl, imgUploadPreviewImg, onAddScale, onRemoveScale } from './scale-control.js';
 
-const userUploadPhoto = document.querySelector('#upload-file');
+const userUploadPhoto = document.querySelector('.img-upload__input');
 const userModalWindow = document.querySelector('.img-upload__overlay');
 const userModalWindowStyle = document.querySelector('body');
 const userCloseModalWindow = userModalWindow.querySelector('.img-upload__cancel');
 
+//Функция очистки данных модального окна
+const onUserModalWindow = () => {
+  userModalWindow.classList.add('hidden');
+  userModalWindowStyle.classList.toggle('modal-open');
+  elementDescription.value = '';
+  scaleControl.value = `${DEFAULT_SCALE}%`;
+  imgUploadPreviewImg.style = 'transform: scale(1)';
+  resetFilter();
+  onRemoveScale();
+  userUploadPhoto.value = '';
+  userUploadPhoto.innerHTML = '';
+};
+
+//Функция закрытия модального окна клавишей ESC
 const onModalEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeUserModal();
+    onUserModalWindow();
   }
 };
 
 //Функция открытия модального окна
-function openUserModal () {
+const openUserModal = () => {
   userModalWindow.classList.remove('hidden');
   userModalWindowStyle.classList.toggle('modal-open');
-  onValidateComment ();
-
   document.addEventListener('keydown', onModalEscKeydown);
-}
+  onAddScale();
+  form.addEventListener('change', onFormChange);
+  document.removeEventListener('change', on);
+};
 
+//Обработчик открытия модального окна
 userUploadPhoto.addEventListener('change', () => {
   openUserModal();
 });
 
-userUploadPhoto.addEventListener('change', (evt) => {
+//Обработчик открытия модального окна клавишей Enter
+function on (evt) {
   if (isEnterKey(evt)) {
     openUserModal();
   }
-});
+}
+document.addEventListener('change', on);
 
 //Функция закрытия модального окна
-function closeUserModal () {
-  resetScale();
-  resetEffects();
-  userModalWindow.classList.add('hidden');
-  userModalWindowStyle.classList.toggle('modal-open');
-
-  userUploadPhoto.innerHTML = '';
+const closeUserModal = () => {
+  form.removeEventListener('change', onFormChange);
   document.removeEventListener('keydown', onModalEscKeydown);
-}
+  onUserModalWindow();
+};
 
+//Обработчик закрытия модального окна
 userCloseModalWindow.addEventListener('click', () => {
   closeUserModal();
 });
 
+//Обработчик закрытия модального окна клавишей ESC
 userCloseModalWindow.addEventListener('keydown', (evt) => {
   if (isEscapeKey(evt)) {
     closeUserModal();
   }
 });
+
+export { openUserModal, closeUserModal};
