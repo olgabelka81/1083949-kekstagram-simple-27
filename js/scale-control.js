@@ -32,16 +32,16 @@ const onBiggerButtonClick = () => {
 };
 
 //Функция добавления обработчиков на кнопках "-" и "+"
-const addScaleHandler = () => {
+const onAddScale = () => {
   scaleControl.value = `${DEFAULT_SCALE}%`;
   scaleControlSmaller.addEventListener('click', onSmallerButtonClick);
   scaleControlBigger.addEventListener('click', onBiggerButtonClick);
 };
 
 //Функция удаления обработчиков с кнопок "-" и "+"
-const removeScaleHandler = () => {
+const onRemoveScale = () => {
   scaleControlSmaller.removeEventListener('click', onSmallerButtonClick);
   scaleControlBigger.removeEventListener('click', onBiggerButtonClick);
 };
 
-export {DEFAULT_SCALE, scaleControl, imgUploadPreviewImg, removeScaleHandler, addScaleHandler };
+export {DEFAULT_SCALE, scaleControl, imgUploadPreviewImg, onRemoveScale, onAddScale };

@@ -1,9 +1,7 @@
-
 const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
-
 const effects = document.querySelectorAll('.effects__radio');
 
 const EFFECTS = [
@@ -100,7 +98,7 @@ const onSliderUpdate = () => {
 };
 
 //Сброс значений эффектов
-const resetEffects = () => {
+const resetFilter = () => {
   effects[0].checked = true;
   chosenEffect = DEFAULT_EFFECT;
   imgUploadPreviewImg.removeAttribute('class');
@@ -123,5 +121,5 @@ updateSlider();
 
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 
-export { form, onFormChange, resetEffects };
+export { form, onFormChange, resetFilter };
 

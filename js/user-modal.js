@@ -1,9 +1,9 @@
 import {isEscapeKey, isEnterKey} from './utils.js';
-import { form, onFormChange, resetEffects } from './filters.js';
+import { form, onFormChange, resetFilter } from './filters.js';
 import { elementDescription } from './validate-form.js';
-import { DEFAULT_SCALE, scaleControl, imgUploadPreviewImg, addScaleHandler, removeScaleHandler } from './scale-control.js';
+import { DEFAULT_SCALE, scaleControl, imgUploadPreviewImg, onAddScale, onRemoveScale } from './scale-control.js';
 
-const userUploadPhoto = document.querySelector('#upload-file');
+const userUploadPhoto = document.querySelector('.img-upload__input');
 const userModalWindow = document.querySelector('.img-upload__overlay');
 const userModalWindowStyle = document.querySelector('body');
 const userCloseModalWindow = userModalWindow.querySelector('.img-upload__cancel');
@@ -15,8 +15,8 @@ const onUserModalWindow = () => {
   elementDescription.value = '';
   scaleControl.value = `${DEFAULT_SCALE}%`;
   imgUploadPreviewImg.style = 'transform: scale(1)';
-  resetEffects();
-  removeScaleHandler();
+  resetFilter();
+  onRemoveScale();
   userUploadPhoto.value = '';
   userUploadPhoto.innerHTML = '';
 };
@@ -34,7 +34,7 @@ const openUserModal = () => {
   userModalWindow.classList.remove('hidden');
   userModalWindowStyle.classList.toggle('modal-open');
   document.addEventListener('keydown', onModalEscKeydown);
-  addScaleHandler();
+  onAddScale();
   form.addEventListener('change', onFormChange);
   document.removeEventListener('change', on);
 };

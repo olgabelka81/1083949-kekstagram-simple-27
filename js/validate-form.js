@@ -4,7 +4,7 @@ import {sendData} from './api.js';
 const bodyElement = document.querySelector('body');
 const validateForm = document.querySelector('.img-upload__form');
 const submitButton = validateForm.querySelector('.img-upload__submit');
-const elementDescription = validateForm.querySelector('#description');
+const elementDescription = validateForm.querySelector('.text__description');
 
 const messageSuccessTemplateElement = document.querySelector('#success').content.querySelector('.success');
 const messageErrorTemplateElement = document.querySelector('#error').content.querySelector('.error');
