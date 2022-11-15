@@ -1,9 +1,3 @@
-const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
-const form = document.querySelector('.img-upload__form');
-const sliderElement = document.querySelector('.effect-level__slider');
-const valueElement = document.querySelector('.effect-level__value');
-const effects = document.querySelectorAll('.effects__radio');
-
 const EFFECTS = [
   {
     name: 'none',
@@ -52,7 +46,15 @@ const EFFECTS = [
     unit: '',
   }
 ];
+
 const DEFAULT_EFFECT = EFFECTS[0];
+
+const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
+const form = document.querySelector('.img-upload__form');
+const sliderElement = document.querySelector('.effect-level__slider');
+const valueElement = document.querySelector('.effect-level__value');
+const effects = document.querySelectorAll('.effects__radio');
+
 let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;

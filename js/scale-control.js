@@ -1,15 +1,15 @@
-const userModalWindow = document.querySelector('.img-upload__overlay');
-const scaleControlSmaller = document.querySelector('.scale__control--smaller');
-const scaleControlBigger = document.querySelector('.scale__control--bigger');
-const scaleControl = userModalWindow.querySelector('.scale__control--value');
-const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
-
 //Данные для увеличения и уменьшения масштаба
 const SCALE_STEP = 25;
 const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
 const DIVIDER_FOR_SCALE = 100;
+
+const userModalWindow = document.querySelector('.img-upload__overlay');
+const scaleControlSmaller = document.querySelector('.scale__control--smaller');
+const scaleControlBigger = document.querySelector('.scale__control--bigger');
+const scaleControl = userModalWindow.querySelector('.scale__control--value');
+const imgUploadPreviewImg = document.querySelector('.img-upload__preview img');
 
 //Кнопка уменьшения масштаба
 const onSmallerButtonClick = () => {
